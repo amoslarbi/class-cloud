@@ -71,8 +71,6 @@ function get_user_role($link, $apid){
 	return $qr['rlid'];
 }
 
-
-
 function checkaudio($link,$imagename,$imgsize){
     $allow = array('mp3','wav');
     $bits = explode('.',$imagename);
@@ -87,8 +85,6 @@ function checkaudio($link,$imagename,$imgsize){
         return '1';
     }
 }
-
-
 
 function checkvideo($link,$imagename,$imgsize){
     $allow = array('mp4','wmv');
@@ -105,8 +101,6 @@ function checkvideo($link,$imagename,$imgsize){
     }
 }
 
-
-
 function checkgame($link,$imagename,$imgsize){
     $allow = array('fla','swf');
     $bits = explode('.',$imagename);
@@ -121,7 +115,6 @@ function checkgame($link,$imagename,$imgsize){
         return '1';
     }
 }
-
 
 function checkimage($link,$imagename,$imgsize){
     $allow = array('jpg','jpeg','png','svg');
@@ -138,7 +131,6 @@ function checkimage($link,$imagename,$imgsize){
     }
 }
 
-
 function uploadmaterial($link,$imagename,$imagetmp){
     $allow = array('jpg','jpeg','png','svg','fla','swf','mp4','wmv','mp3','wav');
     $bits = explode('.',$imagename);
@@ -151,7 +143,6 @@ function uploadmaterial($link,$imagename,$imagetmp){
         }
         return $filename;
 }
-
 
 function uploadimage($link,$imagename,$imagetmp){
     $allow = array('jpg','jpeg','png','svg');
@@ -210,12 +201,9 @@ function grade_student($link,$stid,$slid){
           $stlid = $cqr['stlid'];
           $up = mysqli_query($link, "UPDATE student_lessons SET score='$scz',created=now() WHERE stid='$stid' AND slcid='$slcidx' "); 
         }
-        
 
       $tqz += $qtnum;
       $tans += $countt;
-
-
 
     }
     $scorez = ($tans/$tqz)*100;
@@ -226,11 +214,9 @@ function grade_student($link,$stid,$slid){
             <span style="font-size: 12px;">'.round($scorez,1).'%</span>';
   }
 
-
   function grade($link, $scorez){
     $grq = mysqli_query($link, "SELECT grade FROM gradebook WHERE (maxscore > '$scorez' OR maxscore = '$scorez') AND (minscore < '$scorez' OR minscore = '$scorez')");
     $gdr = mysqli_fetch_assoc($grq);
     return $gdr['grade'];
   }
-
 ?>

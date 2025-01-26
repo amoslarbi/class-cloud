@@ -1,6 +1,5 @@
 <?php
 require 'clean.php';
-
 function user_login($link, $email, $password){
 	$loge = 0;
 	$email = clean($link,$email);
@@ -32,6 +31,4 @@ function user_login($link, $email, $password){
     }
 
 }
-
-
 ?>

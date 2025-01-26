@@ -21,8 +21,6 @@ if(isset($_POST['send'])){
         $showerror = 'style="display: block;"';
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +64,6 @@ if(isset($_POST['send'])){
 </head>
 
 <body class="login">
-
   <div class="row">
     <div class="col-sm-8 col-sm-push-1 col-md-4 col-md-push-4 col-lg-4 col-lg-push-4">
       <div class="center m-a-2">
@@ -123,5 +120,4 @@ if(isset($_POST['send'])){
   <script src="assets/js/main.min.js"></script>
 
 </body>
-
 </html>

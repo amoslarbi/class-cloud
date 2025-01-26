@@ -26,10 +26,6 @@ else{
   header('location: login');
 }
 
-
-
-
-
 $slcidx='';
 $error=0;
 $errormesg=$echoscript='';
@@ -92,12 +88,12 @@ else{
             </li>
             <li class="sidebar-menu-item active">
               <a class="sidebar-menu-button" href="view_subjects">
-                <i class="sidebar-menu-icon material-icons">class</i> View Subjects
+                <i class="sidebar-menu-icon material-icons">class</i> View Courses
               </a>
             </li>
             <li class="sidebar-menu-item">
               <a class="sidebar-menu-button" href="take_lesson">
-                <i class="sidebar-menu-icon material-icons">import_contacts</i> Take Subject
+                <i class="sidebar-menu-icon material-icons">import_contacts</i> Take Course
               </a>
             </li>
             <li class="sidebar-menu-item">
@@ -113,7 +109,7 @@ else{
       if($gsubnum == 0){
         $ensubs = '<div class="center" style="margin-top: 50px;color: #999;">
                       <i class="sidebar-menu-icon material-icons" style="font-size: 50px;width: 70px;">info</i>
-                      <p>No subject found</p>
+                      <p>No course found</p>
                     </div>';
       }
       else{
@@ -127,7 +123,7 @@ else{
 
           $levelnm = get_level($link, $lidz);
           if($levelarray[0] != $levelnm){
-            $ensubs .= '<p style="padding:10px;background-color:#eee">'.$levelnm.' Subjects</p>';
+            $ensubs .= '<p style="padding:10px;background-color:#eee">'.$levelnm.' Courses</p>';
             $levelarray[0] = $levelnm;
           }
 
@@ -173,7 +169,7 @@ else{
                           <div class="card-header bg-white">
                             <div class="media">
                               <div class="media-body">
-                                <h4 class="card-title">Subjects</h4>
+                                <h4 class="card-title">Courses</h4>
                               </div>
                             </div>
                           </div>
@@ -188,7 +184,7 @@ else{
   $dataresult = '<div class="container-fluid">
                     <ol class="breadcrumb">
                       <li><a href="#">Home</a></li>
-                      <li class="active">Subjects</li>
+                      <li class="active">Courses</li>
                     </ol>
                     '.$ensubs.'
                   </div>';
@@ -482,25 +478,10 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
     <!-- // END Search -->
 
     <ul class="nav navbar-nav hidden-sm-down">
-
-      <!-- Menu -->
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="forum.html">Forum</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="get-help.html">Get Help</a>
-      </li> -->
     </ul>
 
     <!-- Menu -->
     <ul class="nav navbar-nav pull-xs-right">
-
-      <!-- <li class="nav-item">
-        <a href="cart.html" class="nav-link">
-          <i class="material-icons">shopping_cart</i>
-        </a>
-      </li> -->
-
       <!-- User dropdown -->
       <li class="nav-item dropdown">
         <a class="nav-link active dropdown-toggle p-a-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false">
@@ -514,7 +495,6 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
         </div>
       </li>
       <!-- // END User dropdown -->
-
     </ul>
     <!-- // END Menu -->
 
@@ -522,8 +502,6 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
   <!-- // END Navbar -->
   <!-- Sidebar -->
   <div class="sidebar sidebar-left sidebar-light sidebar-visible-md-up si-si-3 ls-top-navbar-xs-up sidebar-transparent-md" id="sidebarLeft" data-scrollable>
-    <!-- 
-    <div class="sidebar-heading">Student</div> -->
     <ul class="sidebar-menu">
       <?php echo $menu;?>
     </ul>
@@ -545,8 +523,8 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
         </div>
         <div class="card">
           <div class="card-header bg-white center">
-            <h4 class="card-title">Subject Form</h4>
-            <p class="card-subtitle">Add a new subject</p>
+            <h4 class="card-title">Course Form</h4>
+            <p class="card-subtitle">Add a new course</p>
           </div>
           <div class="p-a-2">
             <form action="" method="POST" data-parsley-validate enctype="multipart/form-data">
@@ -557,7 +535,7 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
                 <input type="file" class="form-control" name="icon" required>
               </div>
               <p class="center">
-                <button type="submit" name="addsubject" class="btn btn-success btn-rounded btn-block">Add Subject</button>
+                <button type="submit" name="addsubject" class="btn btn-success btn-rounded btn-block">Add Course</button>
               </p>
             </form>
           </div>
@@ -575,14 +553,14 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
         </div>
         <div class="card">
           <div class="card-header bg-white center">
-            <h4 class="card-title">Subject Level Form</h4>
-            <p class="card-subtitle">Create subject for a level</p>
+            <h4 class="card-title">Course Level Form</h4>
+            <p class="card-subtitle">Create course for a level</p>
           </div>
           <div class="p-a-2">
             <form action="" method="POST" data-parsley-validate>
               <div class="form-group">
                <select class="form-control" name="subject" required>
-                  <option value="">*-- Subject --*</option>
+                  <option value="">*-- Course --*</option>
                   <?php echo $subjectz;?>
                 </select>
               </div>
@@ -611,8 +589,6 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
         <p style="color:#fff;width:100%;text-align:center;">Please wait...</p>
     </div>
   </div>
-
-  
 
   <!-- Bootstrap -->
   <script src="assets/vendor/tether.min.js"></script>
@@ -643,5 +619,4 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
   <script src="examples/js/touchspin.js"></script>
 
 </body>
-
 </html>

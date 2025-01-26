@@ -15,32 +15,13 @@ if(isset($_SESSION['apid']) == true){
     <link href="css/animate.min.css" rel="stylesheet"> 
     <link href="css/lightbox.css" rel="stylesheet"> 
 	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
-
-    <!--[if lt IE 9]>
-	    <script src="js/html5shiv.js"></script>
-	    <script src="js/respond.min.js"></script>
-    <![endif]-->       
+	<link href="css/responsive.css" rel="stylesheet">      
     <link rel="shortcut icon" href="images/ico/fav.png">
-</head><!--/head-->
+</head>
 
 <body>
+    <!--/#header-->
 	<header id="header">      
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col-sm-12 overflow">
-                   <div class="social-icons pull-right">
-                        <ul class="nav nav-pills">
-                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href=""><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div> 
-                </div>
-             </div>
-        </div> -->
         <div class="navbar navbar-inverse" role="banner">
             <div class="container">
                 <div class="navbar-header">
@@ -124,7 +105,7 @@ if(isset($_SESSION['apid']) == true){
                 </div>
                 <div class="col-sm-12">
                     <div class="copyright-text text-center">
-                        <p>&copy; ClassCloud 2017. All Rights Reserved.</p>
+                        <p>&copy; ClassCloud 2025. All Rights Reserved.</p>
                     </div>
                 </div>
             </div>

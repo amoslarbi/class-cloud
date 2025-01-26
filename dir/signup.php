@@ -107,8 +107,6 @@ if(isset($_POST['register'])){
 
 
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -249,11 +247,9 @@ if(isset($_POST['register'])){
   <!-- Init -->
   <script src="examples/js/date-time.js"></script>
 
-
   <!-- App JS -->
   <script src="assets/js/main.min.js"></script>
   <script src="assets/js/parsley.js"></script>
 
 </body>
-
 </html>

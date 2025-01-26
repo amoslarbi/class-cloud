@@ -5,7 +5,6 @@ $apid = $_SESSION['apid'];
 $rlid = get_user_role($link, $apid);
 $uidx = get_userid($link, $apid);
 
-
 if(isset($_POST['action']) && $_POST['action'] == 'dellesson'){
 	if($rlid != 3){
 		echo "You do not have clearance to perform this action";
@@ -81,7 +80,6 @@ if(isset($_POST['action']) && $_POST['action'] == 'dellesson'){
 	
 }
 
-
 if(isset($_POST['action']) && $_POST['action'] == 'unenroll'){
 	if($rlid != 2){
 		echo "You do not have clearance to perform this action";
@@ -110,16 +108,15 @@ if(isset($_POST['action']) && $_POST['action'] == 'unenroll'){
     		}
     	}
     	else{
-    		echo "Sorry you can not unenroll yourself, Have your instructor uneroll you for this subject...";	
+    		echo "Sorry you can not unenroll yourself, Have your instructor uneroll you for this course...";	
     	}
     }
     else{
-    	echo "You are not enrolled for this subject";	
+    	echo "You are not enrolled for this course";	
     }
 	exit();
 	
 }
-
 
 if(isset($_POST['action']) && $_POST['action'] == 'enroll'){
 	if($rlid != 2){
@@ -142,16 +139,15 @@ if(isset($_POST['action']) && $_POST['action'] == 'enroll'){
     		}
     	}
     	else{
-    		echo "Sorry you can not enroll yourself, Have your instructor eroll you for this subject...";	
+    		echo "Sorry you can not enroll yourself, Have your instructor eroll you for this course...";	
     	}
     }
     else{
-    	echo "You are already enrolled for this subject";	
+    	echo "You are already enrolled for this course";	
     }
 	exit();
 	
 }
-
 
 if(isset($_GET['progerss'])){
 	if($rlid != 1){
@@ -206,13 +202,6 @@ if(isset($_GET['progerss'])){
 			else{
 				$qqr = mysqli_fetch_assoc($qq);
 				$qid = $qqr['mid'];
-				/*$ques = '<ul class="nestable-list">
-		                    <li class="nestable-item">
-		                      <div class="nestable-handle" >
-		                        <span class="label label-primary" onclick="alert(\'download questions for thsi lesson\')" style="cursor:pointer;">Download Questions and Answers</span>
-		                      </div>
-		                    </li>
-		                  </ul>';*/
 		        $ques = '';
 			}
 
@@ -250,10 +239,5 @@ if(isset($_GET['progerss'])){
 
 	echo $result;
 	exit();
-
-
 }
-
-
-
 ?>

@@ -383,7 +383,7 @@ if($rlid == 3){
       $cknum = mysqli_num_rows($ck);
       if($cknum > 0){
         $error++;
-        $errormesg .= 'Lesson title for this subject already exits<br>';
+        $errormesg .= 'Lesson title for this course already exits<br>';
       }
     }
 
@@ -392,7 +392,7 @@ if($rlid == 3){
       $cknum = mysqli_num_rows($ckq);
       if($cknum > 0){
         $error++;
-        $errormesg .= 'Lesson number for this subject already exits<br>';
+        $errormesg .= 'Lesson number for this course already exits<br>';
       }
     }
 
@@ -465,7 +465,7 @@ if($rlid == 3){
 
     if (empty($subject)==true) {
       $error++;
-      $errormesg .= "Subject field empty<br>";
+      $errormesg .= "Course field empty<br>";
     }
 
     if($error == 0){
@@ -477,8 +477,8 @@ if($rlid == 3){
         if($q){
           $echoscript = '<script type="text/javascript">
                                   swal({
-                                      title: "Subject Added!",
-                                      text: "Subject added successfully",
+                                      title: "Course Added!",
+                                      text: "Course added successfully",
                                       type: "success",
                                       showCancelButton: false,
                                       confirmButtonText: "Okay!",
@@ -491,7 +491,7 @@ if($rlid == 3){
         $echoscript = '<script type="text/javascript">
                                   swal({
                                       title: "Error",
-                                      text: "Subject already exit",
+                                      text: "Course already exit",
                                       type: "error",
                                       html: true,
                                       showCancelButton: false,
@@ -529,8 +529,8 @@ if($rlid == 3){
         if($q){
           $echoscript = '<script type="text/javascript">
                                     swal({
-                                        title: "Subject Level Created!",
-                                        text: "Subject level created successfully",
+                                        title: "Course Level Created!",
+                                        text: "Course level created successfully",
                                         type: "success",
                                         showCancelButton: false,
                                         confirmButtonText: "Okay!",
@@ -543,7 +543,7 @@ if($rlid == 3){
         $echoscript = '<script type="text/javascript">
                                   swal({
                                       title: "Error",
-                                      text: "Subject level already exit",
+                                      text: "Course level already exit",
                                       type: "error",
                                       html: true,
                                       showCancelButton: false,
@@ -910,10 +910,10 @@ if($rlid == 3){
     if($qnum == 0){
       $allcourses = '<nav class="center" style="margin-top: 100px;">
                         <i class="sidebar-menu-icon material-icons" style="font-size: 50px;width: 70px;">library_books</i>
-                        <p>No Subject(s)</p>
+                        <p>No Course(s)</p>
                         <button onclick="addsubject()" type="button" class="btn btn-primary">
                           <i class="material-icons">add_box</i>
-                          <span class="icon-text">Add Subject</span>
+                          <span class="icon-text">Add Course</span>
                         </button>
                       </nav>';
     } 
@@ -949,11 +949,11 @@ if($rlid == 3){
       $allcourses = '<h1 class="page-heading h2">Manage Courses
                         <button onclick="addsubjectlevel()" style="float: right;margin:0 5px" type="button" class="btn btn-success">
                           <i class="material-icons">add_box</i>
-                          <span class="icon-text">Create Subject Level</span>
+                          <span class="icon-text">Create Course Level</span>
                         </button>
                         <button onclick="addsubject()" style="float: right;" type="button" class="btn btn-primary">
                           <i class="material-icons">add_box</i>
-                          <span class="icon-text">Add Subject</span>
+                          <span class="icon-text">Add Course</span>
                         </button>
                       </h1>
                       <div class="card-columns">
@@ -1009,7 +1009,7 @@ if($rlid == 3){
           $echoscript = '<script type="text/javascript">
                                   swal({
                                       title: "All done",
-                                      text: "Student has been erolled for '.$gadded.' subject(s)",
+                                      text: "Student has been erolled for '.$gadded.' course(s)",
                                       type: "success",
                                       html: true,
                                       showCancelButton: false,
@@ -1022,7 +1022,7 @@ if($rlid == 3){
         $echoscript = '<script type="text/javascript">
                                   swal({
                                       title: "Error",
-                                      text: "Failed to enroll Student for '.$aerror.' subject(s)<br>Cause: the student has enrolled for the subject already.",
+                                      text: "Failed to enroll Student for '.$aerror.' course(s)<br>Cause: the student has enrolled for the course already.",
                                       type: "error",
                                       html: true,
                                       showCancelButton: false,
@@ -1283,7 +1283,7 @@ if($rlid == 3){
 
   if((isset($_GET['s'])) && (empty($_GET['s']) == false)){
     $stid = clean($link, $_GET['s']);
-    $stq = mysqli_query($link, "SELECT * FROM student WHERE stid='$stid' AND inst_id='$uidx' ");
+    $stq = mysqli_query($link, "SELECT * FROM student WHERE stid='$stid'");
     $scount = mysqli_num_rows($stq);
     if($scount == 0){
       $wards = '<nav class="center" style="margin-top: 100px;">
@@ -1309,7 +1309,7 @@ if($rlid == 3){
       if($gsubnum == 0){
         $ensubs = '<div class="center" style="margin-top: 50px;color: #9e9e9e;">
                       <i class="sidebar-menu-icon material-icons" style="font-size: 50px;width: 70px;">info</i>
-                      <p>No enrolled subject(s)</p>
+                      <p>No enrolled course(s)</p>
                     </div>';
       }
       else{
@@ -1371,7 +1371,9 @@ if($rlid == 3){
       }
 
       $wards = '<ol class="breadcrumb m-b-0">
-                  <li class="admin-students-menu"><a href="hub">Your Students</a></li>
+                      <li class="admin-students-menu" onclick="goBack()">
+        <a href="javascript:void(0);">Your Students</a>
+    </li>
                   <li class="active" style="text-transform:capitalize;">'.$fullname.'</li>
                 </ol>
                 <div class="center">
@@ -1539,7 +1541,7 @@ else if($rlid == 1){
           $echoscript = '<script type="text/javascript">
                                   swal({
                                       title: "All done",
-                                      text: "Student has been erolled for '.$gadded.' subject(s)",
+                                      text: "Student has been erolled for '.$gadded.' course(s)",
                                       type: "success",
                                       html: true,
                                       showCancelButton: false,
@@ -1552,7 +1554,7 @@ else if($rlid == 1){
         $echoscript = '<script type="text/javascript">
                                   swal({
                                       title: "Error",
-                                      text: "Failed to enroll Student for '.$aerror.' subject(s)<br>Cause: the student has enrolled for the subject already.",
+                                      text: "Failed to enroll Student for '.$aerror.' course(s)<br>Cause: the student has enrolled for the course already.",
                                       type: "error",
                                       html: true,
                                       showCancelButton: false,
@@ -1839,7 +1841,7 @@ else if($rlid == 1){
       if($gsubnum == 0){
         $ensubs = '<div class="center" style="margin-top: 50px;color: #9e9e9e;">
                       <i class="sidebar-menu-icon material-icons" style="font-size: 50px;width: 70px;">info</i>
-                      <p>No enrolled subject(s)</p>
+                      <p>No enrolled course(s)</p>
                     </div>';
       }
       else{
@@ -1998,12 +2000,12 @@ else{
             </li>
             <li class="sidebar-menu-item">
               <a class="sidebar-menu-button" href="view_subjects">
-                <i class="sidebar-menu-icon material-icons">class</i> View Subjects
+                <i class="sidebar-menu-icon material-icons">class</i> View Courses
               </a>
             </li>
             <li class="sidebar-menu-item">
               <a class="sidebar-menu-button" href="take_lesson">
-                <i class="sidebar-menu-icon material-icons">import_contacts</i> Take Subject
+                <i class="sidebar-menu-icon material-icons">import_contacts</i> Take Course
               </a>
             </li>
             <li class="sidebar-menu-item">
@@ -2021,7 +2023,7 @@ else{
       if($gsubnum == 0){
         $ensubs = '<div class="center" style="margin-top: 50px;color: #999;">
                       <i class="sidebar-menu-icon material-icons" style="font-size: 50px;width: 70px;">info</i>
-                      <p>You have not enrolled for this subject</p>
+                      <p>You have not enrolled for this course</p>
                       <a href="hub"><button type="button" class="btn btn-primary">
                         <i class="material-icons">home</i>
                         <span class="icon-text">Go Home</span>
@@ -2058,7 +2060,7 @@ else{
             $startlesson = '';
             $lessonx = '<div class="center" style="margin-top: 50px;color: #999;">
                       <i class="sidebar-menu-icon material-icons" style="font-size: 50px;width: 70px;">info</i>
-                      <p>This subject has no lessons yet...</p>
+                      <p>This course has no lessons yet...</p>
                       <a href="hub"><button type="button" class="btn btn-primary">
                         <i class="material-icons">home</i>
                         <span class="icon-text">Go Home</span>
@@ -2242,10 +2244,10 @@ else{
       if($gsubnum == 0){
         $ensubs = '<div class="center" style="margin-top: 50px;color: #999;">
                       <i class="sidebar-menu-icon material-icons" style="font-size: 50px;width: 70px;">info</i>
-                      <p>You have not enrolled for any subject</p>
+                      <p>You have not enrolled for any course</p>
                       <a href="view_subjects"><button type="button" class="btn btn-primary">
                         <i class="material-icons">class</i>
-                        <span class="icon-text">View Subjects</span>
+                        <span class="icon-text">View Courses</span>
                       </button></a>
                     </div>';
       }
@@ -2680,8 +2682,8 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
         </div>
         <div class="card">
           <div class="card-header bg-white center">
-            <h4 class="card-title">Subject Form</h4>
-            <p class="card-subtitle">Add a new subject</p>
+            <h4 class="card-title">Course Form</h4>
+            <p class="card-subtitle">Add a new course</p>
           </div>
           <div class="p-a-2">
             <form action="" method="POST" data-parsley-validate enctype="multipart/form-data">
@@ -2692,7 +2694,7 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
                 <input type="file" class="form-control" name="icon" required>
               </div>
               <p class="center">
-                <button type="submit" name="addsubject" class="btn btn-success btn-rounded btn-block">Add Subject</button>
+                <button type="submit" name="addsubject" class="btn btn-success btn-rounded btn-block">Add Course</button>
               </p>
             </form>
           </div>
@@ -2710,14 +2712,14 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
         </div>
         <div class="card">
           <div class="card-header bg-white center">
-            <h4 class="card-title">Subject Level Form</h4>
-            <p class="card-subtitle">Create subject for a level</p>
+            <h4 class="card-title">Course Level Form</h4>
+            <p class="card-subtitle">Create course for a level</p>
           </div>
           <div class="p-a-2">
             <form action="" method="POST" data-parsley-validate>
               <div class="form-group">
                <select class="form-control" name="subject" required>
-                  <option value="">*-- Subject --*</option>
+                  <option value="">*-- Course --*</option>
                   <?php echo $subjectz;?>
                 </select>
               </div>
@@ -2757,14 +2759,14 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
         <div class="card">
           <div class="card-header bg-white center">
             <h4 class="card-title">Enroll Form</h4>
-            <p class="card-subtitle">Select subject(s) for student</p>
+            <p class="card-subtitle">Select course(s) for student</p>
           </div>
           <div class="p-a-2">
             <form action="" method="POST" data-parsley-validate>
-              <p style="margin: 5px 0;font-weight: bold;">JHS Subject(s)</p>
+              <p style="margin: 5px 0;font-weight: bold;">Junior Course(s)</p>
               <hr style="margin:0px;">
               <?php echo $jhssubs;?>
-              <p style="margin: 5px 0;font-weight: bold;">SHS Subject(s)</p>
+              <p style="margin: 5px 0;font-weight: bold;">Senior Course(s)</p>
               <hr style="margin:0px;">
               <?php echo $shssubs;?>
               <p class="center">
@@ -2999,6 +3001,10 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
       coursesMenuItem.classList.remove('active');
     });
   });
+          // Function to simulate the browser's back button
+          function goBack() {
+        window.history.back();
+    }
 </script>
 
 </body>
