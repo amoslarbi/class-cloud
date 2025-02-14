@@ -1,6 +1,6 @@
 /*!
 * Parsley.js
-* Version 2.6.0 - built Wed, Nov 2nd 2016, 10:27 am
+* Version 2.6.0
 * http://parsleyjs.org
 * Guillaume Potier - <guillaume@wisembly.com>
 * Marc-Andre Lafortune - <petroselinum@marc-andre.ca>
@@ -9,7 +9,7 @@
 function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,i=Array(e.length);t<e.length;t++)i[t]=e[t];return i}return Array.from(e)}var _slice=Array.prototype.slice;!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t(require("jquery")):"function"==typeof define&&define.amd?define(["jquery"],t):e.parsley=t(e.jQuery)}(this,function(e){"use strict";function t(e,t){return e.parsleyAdaptedCallback||(e.parsleyAdaptedCallback=function(){var i=Array.prototype.slice.call(arguments,0);i.unshift(this),e.apply(t||T,i)}),e.parsleyAdaptedCallback}function i(e){return 0===e.lastIndexOf(D,0)?e.substr(D.length):e}/**
    * inputevent - Alleviate browser bugs for input events
    * https://github.com/marcandre/inputevent
-   * @version v0.0.3 - (built Thu, Apr 14th 2016, 5:58 pm)
+   * @version v0.0.3
    * @author Marc-Andre Lafortune <github@marc-andre.ca>
    * @license MIT
    */

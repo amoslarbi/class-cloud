@@ -44,23 +44,6 @@ if(isset($_POST['send'])){
   <!-- App CSS -->
   <link type="text/css" href="assets/css/style.min.css" rel="stylesheet">
   <link type="text/css" href="assets/css/style.css" rel="stylesheet">
-
-<style type="text/css">
-  .row{
-    margin: 0;
-  }
-  #errorbx{
-    width: 100%;
-    background-color: #ff4a4a;
-    border-radius: 4px;
-    margin-top: 10px;
-    padding: 10px 0;
-    font-size: 13px;
-    color: #fff;
-    text-align: center;
-    display: none;
-}
-</style>
 </head>
 
 <body class="login">

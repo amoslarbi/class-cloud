@@ -38,11 +38,9 @@ function action_log($link,$aid,$action,$description){
     $instq = mysqli_query($link, "INSERT INTO admin_log(`aid`,`action`,`details`,`tstamp`) VALUES('$aid','$action','$description',now())");
 }
 
-
 function array_is_unique($array) {
    return array_unique($array) == $array;
 }
-
 
 function get_userid($link, $apid){
 	$q = mysqli_query($link, "SELECT uid FROM appuser WHERE apid='$apid' ");
@@ -50,20 +48,17 @@ function get_userid($link, $apid){
 	return $qr['uid'];
 }
 
-
 function get_subject($link, $sid){
 	$q = mysqli_query($link, "SELECT subject,icon FROM subject WHERE sid='$sid' ");
 	$qr = mysqli_fetch_assoc($q);
 	return $qr['subject'].'|'.$qr['icon'];
 }
 
-
 function get_level($link, $lid){
 	$q = mysqli_query($link, "SELECT level_name FROM level WHERE lid='$lid' ");
 	$qr = mysqli_fetch_assoc($q);
 	return $qr['level_name'];
 }
-
 
 function get_user_role($link, $apid){
 	$q = mysqli_query($link, "SELECT rlid FROM appuser WHERE apid='$apid' ");

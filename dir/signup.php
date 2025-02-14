@@ -138,14 +138,6 @@ if(isset($_POST['register'])){
   <link rel="stylesheet" href="assets/css/parsley.css">  
   <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
   <script src="assets/js/sweetalert.min.js"></script>  
-<style type="text/css">
-  .row{
-    margin: 0;
-  }
-  .c-input>input:checked~.c-indicator {
-      background-color: #66BB6A;
-  }
-</style>
 </head>
 
 <body class="login">

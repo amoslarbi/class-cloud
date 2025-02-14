@@ -323,204 +323,6 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
   <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
   <script src="assets/js/sweetalert.min.js"></script> 
   <script src="assets/js/parsley.js"></script>
-<style type="text/css">
-.gradebx{
-    width: 60px;
-    border-radius: 40px;
-    height: 60px;
-    background-color: #fbfbfb;
-    text-align: center;
-    color: #2196f3;
-    font-size: 20px;
-    padding: 5px;
-  }
-  .gradebx span{
-    margin: 0;
-    float: left;
-    width: 100%;
-  }
-
-.usernmx{
-  text-transform: capitalize;
-}
-.userformbx{
-  width: 90%;
-  min-height: 40px;
-  margin: 10px auto;
-}
-
-.userform,select{
-    width: 100%;
-    margin: 0;
-    height: 40px;
-    padding: 5px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-}
-#progressover{
-  background-color: rgba(39, 39, 39, 0.86);
-  width: 100%;
-    height: 100%;
-    z-index: 100000;
-    float: left;
-    overflow: scroll;
-    display: none;
-    top: 0;
-    position: fixed;
-}
-#addsubjectover{
-  background-color: rgba(181, 181, 181, 0.86);
-  width: 100%;
-    height: 100%;
-    z-index: 100000;
-    float: left;
-    overflow: scroll;
-    display: none;
-    top: 0;
-    position: fixed;
-}
-.lessonzx{
-  font-size: 17px;
-  padding: 10px;
-}
-.lessonzx span{
-  font-weight: 700;
-}
-#addlessonmatover{
-  background-color: rgba(0, 0, 0, 0.85);
-  width: 100%;
-  height: 100%;
-  z-index: 100000;
-  float: left;
-  overflow: scroll;
-  display: none;
-  top: 0;
-  position: fixed;
-}
-#addquestionover{
-  background-color: rgba(0, 0, 0, 0.85);
-  width: 100%;
-  height: 100%;
-  z-index: 100000;
-  float: left;
-  overflow: scroll;
-  display: none;
-  top: 0;
-  position: fixed;
-}
-#addlessonover{
-  background-color: rgba(0, 0, 0, 0.85);
-  width: 100%;
-    height: 100%;
-    z-index: 100000;
-    float: left;
-    overflow: scroll;
-    display: none;
-    top: 0;
-    position: fixed;
-}
-#addsubjectlevelover{
-  background-color: rgba(181, 181, 181, 0.86);
-  width: 100%;
-    height: 100%;
-    z-index: 100000;
-    float: left;
-    overflow: scroll;
-    display: none;
-    top: 0;
-    position: fixed;
-}
- #grayoverlay{
-  background-color: rgba(181, 181, 181, 0.86);
-  width: 100%;
-    height: 100%;
-    z-index: 100000;
-    float: left;
-    overflow: scroll;
-    display: none;
-    top: 0;
-    position: fixed;
- }
- .topheader{
-  width: 100%;
-  height: 25px;
-  border-bottom: 1px solid #eaeaea;
- }
-#lessonstbx{
-  width: 100%;
-  min-height: 50px;
-}
-#questionbx{
-  width: 100%;
-  min-height: 50px;
-}
-.toolsbox{
-  width: 100%;
-  min-height: 200px;
-}
-.buttonmarg{
-  margin: 5px;
-}
-.elementbx{
-  width: 100%;
-  border:1px solid #ccc;
-  float: left;
-  min-height: 100px;
-  border-bottom: 1px solid #ccc;
-  margin-bottom: 10px;
-}
-.elementitle span{
-  float: left;
-  width: 60%;
-  padding: 4px;
-  font-weight: 700;
-  height: 100%;
-  font-size: 16px;
-}
-.elementitle{
-  float: left;
-  width: 100%;
-  height: 30px;
-  background-color: #ccc;
-
-}
-.note-popover .popover-content, .panel-heading.note-toolbar{
-    background-color: #efefef;
-    border-bottom: 1px solid #e0e0e0;
-}
-.closeele{
-  float: right;
-  color: #fff;
-  text-align: center;
-  padding: 2px;
-  cursor: pointer;
-  width: 30px;
-  background-color: #ff6464;
-  height: 30px;
-}
-.elementbody{
-  float: left;
-  padding: 5px;
-  width: 100%;
-  min-height: 40px;
-}
-#optioncnt{
-  width: 100%;
-  min-height: 50px;
-  padding: 10px;
-  float: left;
-  margin: 5px 0;
-  border: 1px dashed #eee;
-}
-.answerbx{
-  width: 100%;
-  min-height: 20px;
-  padding: 10px;
-  margin-top: 20px;
-  float: left;
-  border: 1px dashed #eee;
-}
-</style>
 </head>
 
 <body class="layout-container ls-top-navbar si-l3-md-up">
@@ -554,8 +356,6 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
           <img src="assets/avatar/<?php echo $avatar;?>" alt="Avatar" class="img-circle" width="40">
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-menu-list" aria-labelledby="Preview">
-          <a class="dropdown-item" href="account-edit.html"><i class="material-icons md-18">lock</i> <span class="icon-text">Edit Account</span></a>
-          
           <a class="dropdown-item" href="inc/logout">Logout</a>
         </div>
       </li>
@@ -655,8 +455,6 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
     </div>
   </div>
 
-  
-
   <!-- Bootstrap -->
   <script src="assets/vendor/tether.min.js"></script>
   <script src="assets/vendor/bootstrap.min.js"></script>
@@ -686,5 +484,4 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
   <script src="examples/js/touchspin.js"></script>
 
 </body>
-
 </html>

@@ -7,9 +7,8 @@ if(isset($_POST['submit'])){
       echo $_POST['word'][$i].'<br>';
     }
   }
-  echo $word;//$_POST['word'][3];
+  echo $word;
 }
-
 ?>
 
 <html>
