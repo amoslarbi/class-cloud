@@ -1,4 +1,5 @@
 <?php
+//handling sql injection
 function clean($link,$data){
 	return htmlentities(strip_tags(mysqli_real_escape_string($link,$data)));
 }

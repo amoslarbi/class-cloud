@@ -2,6 +2,7 @@
 session_start();
 require 'inc/over.php';
 
+//check if user session is active and get user data
 if(isset($_SESSION['apid']) == true){
   $apid = $_SESSION['apid'];
   $rlid = get_user_role($link, $apid);
@@ -21,7 +22,7 @@ if(isset($_SESSION['apid']) == true){
   $adfname = $admindata['fname'];
 
 }
-else{
+else{ //if user session is not active, redirect user to the login page
   header('location: login');
 }
 
@@ -29,12 +30,14 @@ $slcidx='';
 $error=0;
 $errormesg=$echoscript='';
 
+//get subject levels
 $levq = mysqli_query($link, "SELECT * FROM level WHERE 1 ORDER BY level_name ASC ");
 $levels = '';
 while ($lr = mysqli_fetch_array($levq, MYSQLI_ASSOC)) {
   $levels .= '<option value="'.$lr['lid'].'">'.$lr['level_name'].'</option>';
 }
 
+//get subjects
 $stjq = mysqli_query($link, "SELECT * FROM subject WHERE 1 ORDER BY subject ASC ");
 $subjectz = '';
 while ($sbjr = mysqli_fetch_array($stjq, MYSQLI_ASSOC)) {
@@ -62,7 +65,7 @@ if ($queryString) {
 }
 
 $subcx = '';
-//***admin
+//begin::admin
 if($rlid == 3){
   if(isset($_POST['addquestionz'])){
     $qtype = clean($link, $_POST['qtype']);
@@ -1491,9 +1494,9 @@ if($rlid == 3){
               </div>';
               }
   }
-//***admin end
+//end::admin
 
-//***instructor
+//begin::instructor
 else if($rlid == 1){
   $wards = '';
 
@@ -1988,9 +1991,9 @@ else if($rlid == 1){
                   '.$wards.'
                   </div>';
 }
-//***instructor end
+//end::instructor
 
-//***student
+//begin::student
 else{
   $gradez = '';
   $menu = '<li class="sidebar-menu-item active">
@@ -2324,7 +2327,7 @@ else{
 
   }
 }
-//***student end
+//end::student
 
 $jhssubs=$shssubs= '';
 $jsq = mysqli_query($link, "SELECT * FROM level WHERE 1 ORDER BY level_name ASC");
@@ -2368,7 +2371,6 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Dashboard</title>
 
-  <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
   <meta name="robots" content="noindex">
   <link rel="shortcut icon" href="assets/images/ccwhite.png">
 

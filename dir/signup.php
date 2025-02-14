@@ -11,6 +11,7 @@ $errorshow=$echoscript=$errormesg = '';
 $error = 0;
 
 if(isset($_POST['register'])){
+  //begin::handle sql injection
   $user = clean($link, $_POST['user']);
   $fname = clean($link, $_POST['fname']);
   $lname = clean($link, $_POST['lname']);
@@ -19,7 +20,9 @@ if(isset($_POST['register'])){
   $gender = clean($link, $_POST['gender']);
   $email = clean($link, $_POST['email']);
   $password = clean($link, $_POST['password']);
+  //end::handle sql injection
 
+  //begin::validate form
   if(empty($user) == true){
     $error++;
   }
@@ -41,6 +44,7 @@ if(isset($_POST['register'])){
   else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
       $error++;
   }
+  //check if user already exist
   else{
       $chkmq = mysqli_query($link, "SELECT uid FROM appuser WHERE email='$email' ");
       $emnum = mysqli_num_rows($chkmq);
@@ -52,6 +56,7 @@ if(isset($_POST['register'])){
   if(empty($password) == true){
       $error++;
   }
+  //end::validate form
 
   if($error == 0){
     $dob = date( "Y-m-d", strtotime(str_replace('/', '-', $dob)));
@@ -59,9 +64,11 @@ if(isset($_POST['register'])){
       $mname = NULL;
     }
 
+    //create account for instructor
     if($user == '1'){
       $insq = mysqli_query($link, "INSERT INTO instructor(fname,lname,mname,gender,dob,added) VALUES('$fname','$lname','$mname','$gender','$dob',now())");
     }
+    //create account for student
     else if($user == '2'){
       $insq = mysqli_query($link, "INSERT INTO student(fname,lname,mname,gender,dob,added) VALUES('$fname','$lname','$mname','$gender','$dob',now())");
     }
@@ -118,7 +125,6 @@ if(isset($_POST['register'])){
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Class_Cloud | Signup</title>
 
-  <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
   <meta name="robots" content="noindex">
   <link rel="shortcut icon" href="../lib/images/favicon.png">
 

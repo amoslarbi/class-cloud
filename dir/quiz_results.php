@@ -285,7 +285,6 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Quiz Results</title>
 
-  <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
   <meta name="robots" content="noindex">
   <link rel="shortcut icon" href="assets/images/ccwhite.png">
 

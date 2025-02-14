@@ -1,4 +1,5 @@
 <?php
+//begin::get user data
 function get_user_data($link,$apid,$rlid){
 	$data = array();
 	$func_num_args = func_num_args();
@@ -33,84 +34,102 @@ function get_user_data($link,$apid,$rlid){
 	}
 
 }
+//end::get user data
 
+//begin::audit trail
 function action_log($link,$aid,$action,$description){
     $instq = mysqli_query($link, "INSERT INTO admin_log(`aid`,`action`,`details`,`tstamp`) VALUES('$aid','$action','$description',now())");
 }
+//end::audit trail
 
 function array_is_unique($array) {
    return array_unique($array) == $array;
 }
 
+//begin::get user id
 function get_userid($link, $apid){
 	$q = mysqli_query($link, "SELECT uid FROM appuser WHERE apid='$apid' ");
 	$qr = mysqli_fetch_assoc($q);
 	return $qr['uid'];
 }
+//end::get user id
 
+//begin::get subject
 function get_subject($link, $sid){
-	$q = mysqli_query($link, "SELECT subject,icon FROM subject WHERE sid='$sid' ");
+	$q = mysqli_query($link, "SELECT subject, icon FROM subject WHERE sid = '$sid' ");
 	$qr = mysqli_fetch_assoc($q);
 	return $qr['subject'].'|'.$qr['icon'];
 }
+//end::get subject
 
+//begin::get course level
 function get_level($link, $lid){
 	$q = mysqli_query($link, "SELECT level_name FROM level WHERE lid='$lid' ");
 	$qr = mysqli_fetch_assoc($q);
 	return $qr['level_name'];
 }
+//end::get course level
 
+//begin::get user role
 function get_user_role($link, $apid){
 	$q = mysqli_query($link, "SELECT rlid FROM appuser WHERE apid='$apid' ");
 	$qr = mysqli_fetch_assoc($q);
 	return $qr['rlid'];
 }
+//end::get user role
 
-function checkaudio($link,$imagename,$imgsize){
+//begin::check audio before upload (eg: size)
+function checkaudio($link,$imagename,$audiosize){
     $allow = array('mp3','wav');
     $bits = explode('.',$imagename);
     $file_extn = strtolower(end($bits));
     if(in_array($file_extn, $allow) == false){
         return '0';
     }
-    else if($imgsize > 10000000 || $imgsize == 0){
+    else if($audiosize > 10000000 || $audiosize == 0){
         return '2';
     }
     else{
         return '1';
     }
 }
+//end::check audio before upload (eg: size)
 
-function checkvideo($link,$imagename,$imgsize){
+//begin::check video before upload (eg: size)
+function checkvideo($link,$imagename,$videosize){
     $allow = array('mp4','wmv');
     $bits = explode('.',$imagename);
     $file_extn = strtolower(end($bits));
     if(in_array($file_extn, $allow) == false){
         return '0';
     }
-    else if($imgsize > 50000000 || $imgsize == 0){
+    else if($videosize > 50000000 || $videosize == 0){
         return '2';
     }
     else{
         return '1';
     }
 }
+//end::check video before upload (eg: size)
 
-function checkgame($link,$imagename,$imgsize){
+//begin::check game before upload (eg: size)
+function checkgame($link,$imagename,$gamesize){
     $allow = array('fla','swf');
     $bits = explode('.',$imagename);
     $file_extn = strtolower(end($bits));
     if(in_array($file_extn, $allow) == false){
         return '0';
     }
-    else if($imgsize > 10000000 || $imgsize == 0){
+    else if($gamesize > 10000000 || $gamesize == 0){
         return '2';
     }
     else{
         return '1';
     }
 }
+//end::check game before upload (eg: size)
 
+//begin::check image before upload (eg: size)
 function checkimage($link,$imagename,$imgsize){
     $allow = array('jpg','jpeg','png','svg');
     $bits = explode('.',$imagename);
@@ -125,7 +144,9 @@ function checkimage($link,$imagename,$imgsize){
         return '1';
     }
 }
+//end::check image before upload (eg: size)
 
+//begin::upload course material
 function uploadmaterial($link,$imagename,$imagetmp){
     $allow = array('jpg','jpeg','png','svg','fla','swf','mp4','wmv','mp3','wav');
     $bits = explode('.',$imagename);
@@ -138,7 +159,9 @@ function uploadmaterial($link,$imagename,$imagetmp){
         }
         return $filename;
 }
+//end::upload course material
 
+//begin::upload image for course material
 function uploadimage($link,$imagename,$imagetmp){
     $allow = array('jpg','jpeg','png','svg');
     $bits = explode('.',$imagename);
@@ -151,7 +174,9 @@ function uploadimage($link,$imagename,$imagetmp){
         }
         return $filename;
 }
+//end::upload image for course material
 
+//begin::grade student
 function grade_student($link,$stid,$slid){
     $gq = mysqli_query($link, "SELECT qid FROM `queries` WHERE qqid IN (SELECT qqid FROM `student_queries` WHERE stid='$stid' AND slcid IN (SELECT slcid FROM subject_level_curriculum WHERE slid='$slid') GROUP BY slcid) GROUP BY qid");
     $gnum = mysqli_num_rows($gq);
@@ -214,4 +239,5 @@ function grade_student($link,$stid,$slid){
     $gdr = mysqli_fetch_assoc($grq);
     return $gdr['grade'];
   }
+//end::grade student
 ?>

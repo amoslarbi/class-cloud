@@ -5,6 +5,7 @@ $apid = $_SESSION['apid'];
 $rlid = get_user_role($link, $apid);
 $uidx = get_userid($link, $apid);
 
+//begin::add course materials
 if(isset($_POST['action']) && $_POST['action'] == 'dellesson'){
 	if($rlid != 3){
 		echo "You do not have clearance to perform this action";
@@ -79,7 +80,9 @@ if(isset($_POST['action']) && $_POST['action'] == 'dellesson'){
 	exit();
 	
 }
+//end::add course materials
 
+//begin::unenroll students
 if(isset($_POST['action']) && $_POST['action'] == 'unenroll'){
 	if($rlid != 2){
 		echo "You do not have clearance to perform this action";
@@ -117,7 +120,9 @@ if(isset($_POST['action']) && $_POST['action'] == 'unenroll'){
 	exit();
 	
 }
+//end::unenroll students
 
+//begin::enroll students
 if(isset($_POST['action']) && $_POST['action'] == 'enroll'){
 	if($rlid != 2){
 		echo "You do not have clearance to perform this action";
@@ -148,7 +153,9 @@ if(isset($_POST['action']) && $_POST['action'] == 'enroll'){
 	exit();
 	
 }
+//end::enroll students
 
+//begin::update student course progress
 if(isset($_GET['progerss'])){
 	if($rlid != 1){
 		echo "You do not have clearance to perform this action";
@@ -240,4 +247,5 @@ if(isset($_GET['progerss'])){
 	echo $result;
 	exit();
 }
+//end::update student course progress
 ?>

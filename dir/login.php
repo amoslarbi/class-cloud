@@ -1,7 +1,7 @@
 <?php
 session_start();
-require 'inc/connect.php';
-require 'inc/login.php';
+require 'inc/connect.php'; //include database connection script
+require 'inc/login.php'; //include login script
 
 if(isset($_SESSION['apid']) == true){
   header('location: hub');
@@ -32,7 +32,6 @@ if(isset($_POST['send'])){
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Class_Cloud | Login</title>
 
-  <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
   <meta name="robots" content="noindex">
   <link rel="shortcut icon" href="assets/images/ccwhite.png">
   <!-- Material Design Icons  -->
