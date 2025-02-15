@@ -942,7 +942,7 @@ if($rlid == 3){
                                   <img src="assets/images/'.$subicon.'" alt="" class="img-rounded" width="60">
                                 </div>
                                 <div class="media-body media-middle">
-                                  <h4 class="card-title"><a href="#">'.$subjectnm.'</a></h4>
+                                  <h4 class="card-title"><a href="hub?sub='.$slidz.'">'.$subjectnm.'</a></h4>
                                   <span class="label label-primary">'.$levelnm.'</span>
                                 </div>
                               </div>
@@ -2421,15 +2421,6 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
     <!-- Brand -->
     <a href="hub" class="navbar-brand" style="background-image:url(assets/images/ccwhite.png);width: 40px;margin: 8px;height: 40px;background-size: 100%;"></a>
 
-    <!-- Search -->
-    <form class="form-inline pull-xs-left hidden-sm-down">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search">
-        <span class="input-group-btn"><button class="btn" type="button"><i class="material-icons">search</i></button></span>
-      </div>
-    </form>
-    <!-- // END Search -->
-
     <ul class="nav navbar-nav hidden-sm-down">
     </ul>
 
@@ -2513,14 +2504,15 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
           <div class="p-a-2">
             <form action="" method="POST" data-parsley-validate>
               <div class="form-group">
+              <p style="color: red;" class="card-subtitle">Placeholders marked with (*) are required</p><br>
                <select class="form-control" name="subject" required>
-                  <option value="">*-- Course --*</option>
+                  <option value="" selected disabled>Select Course *</option>
                   <?php echo $subjectz;?>
                 </select>
               </div>
               <div class="form-group">
                <select class="form-control" name="level" required>
-                  <option value="">*-- Level --*</option>
+                  <option value="" selected disabled>Select Level *</option>
                   <?php echo $levels;?>
                 </select>
               </div>
@@ -2588,45 +2580,52 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
           </div>
           <div class="p-a-2">
             <form action="" method="POST" data-parsley-validate>
+            <p style="color: red;" class="card-subtitle">Placeholders marked with (*) are required</p><br>
               <div class="form-group">
-                <input type="text" class="form-control" name="fname" placeholder="First Name" required>
+                <input type="text" class="form-control" name="fname" placeholder="First Name *" required>
               </div>
               <div class="form-group">
                 <input type="text" class="form-control" name="mname" placeholder="Middle Name">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="lname" placeholder="Last Name" required>
+                <input type="text" class="form-control" name="lname" placeholder="Last Name *" required>
               </div>
               <div class="form-group">
-                  <input class="datepicker form-control" type="text" placeholder="Date of birth" name="dob" required>
+                  <input class="datepicker form-control" type="text" placeholder="Date of birth *" name="dob" required>
               </div>
               <div class="form-group">
                 <div class="c-inputs-stacked">
                   <div class="row">
-                    <div class="col-md-4 col-xs-4 col-sm-4">
-                      Gender:
+                    <div class="col-md-3 col-xs-4 col-sm-4">
+                      Gender *:
                     </div>
-                    <div class="col-md-4 col-xs-4 col-sm-4" style="padding: 4px;">
+                    <div class="col-md-3 col-xs-4 col-sm-4" style="padding: 4px;">
                       <label class="c-input c-radio">
                         <input id="radioStacked1" name="gender" value="m" type="radio" required>
                         <span class="c-indicator"></span> Male
                       </label>
                     </div>
-                    <div class="col-md-4 col-xs-4 col-sm-4" style="padding: 4px;">
+                    <div class="col-md-3 col-xs-4 col-sm-4" style="padding: 4px;">
                       <label class="c-input c-radio">
                         <input id="radioStacked2" name="gender" value="f" type="radio">
                         <span class="c-indicator"></span> Female
+                      </label>
+                    </div>
+                    <div class="col-md-3 col-xs-4 col-sm-4" style="padding: 4px;">
+                      <label class="c-input c-radio">
+                        <input id="radioStacked2" name="gender" value="f" type="radio">
+                        <span class="c-indicator"></span> Other
                       </label>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" name="email" data-parsley-type="email" placeholder="Email" required>
+                <input type="email" class="form-control" name="email" data-parsley-type="email" placeholder="Email *" required>
               </div>
               <div class="form-group">
                 <select class="form-control" name="level" required>
-                  <option value="">*-- Level --*</option>
+                  <option value="" selected disabled>Select Level *</option>
                   <?php echo $levels;?>
                 </select>
               </div>
@@ -2641,7 +2640,8 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
   </div>
   <div id="addlessonover">
     <div class="row">
-      <div class="col-sm-12 col-md-8 col-md-push-2 col-lg-8 col-lg-push-2">
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+      <div class="col-sm-12 col-md-6 col-lg-6">
         <div class="center m-a-2">
           <div class="icon-block img-circle" onclick="hideform()" style="background-color: #fff;cursor:pointer;">
             <i class="material-icons md-36 text-muted" style="color: #ff6666;font-weight: 800;">close</i>
@@ -2655,11 +2655,12 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
           <div class="p-a-2">
             <form action="" method="POST" data-parsley-validate enctype="multipart/form-data">
               <div class="form-group">
-                <input type="text" class="form-control" name="lessontitle" placeholder="Lesson Title" required>
+              <p style="color: red;" class="card-subtitle">Placeholders marked with (*) are required</p><br>
+                <input type="text" class="form-control" name="lessontitle" placeholder="Lesson Title *" required>
               </div>
               <input type="hidden" name="subject_level" value="<?php echo $subcx;?>">
               <div class="form-group">
-                <input type="number" class="form-control" name="lnumber" placeholder="Lesson Number" style="width:50%;" required>
+                <input type="number" class="form-control" name="lnumber" placeholder="Lesson Number *" required>
               </div>
               <p class="center">
                 <button type="submit" name="addlesson" class="btn btn-success btn-rounded btn-block" style="width:40%; margin:5px auto;">Submit</button>
@@ -2668,11 +2669,13 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
           </div>
         </div>
       </div>
+      </div>
     </div>
   </div>
   <div id="addlessonmatover">
     <div class="row">
-      <div class="col-sm-12 col-md-8 col-md-push-2 col-lg-8 col-lg-push-2">
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+      <div class="col-sm-12 col-md-6 col-lg-6">
         <div class="center m-a-2">
           <div class="icon-block img-circle" onclick="hideform()" style="background-color: #fff;cursor:pointer;">
             <i class="material-icons md-36 text-muted" style="color: #ff6666;font-weight: 800;">close</i>
@@ -2685,9 +2688,10 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
           </div>
           <div class="p-a-2">
             <form action="" method="POST" data-parsley-validate enctype="multipart/form-data">
+              <p style="color: red;" class="card-subtitle">Placeholders marked with (*) are required</p><br>
               <div class="form-group">
                 <select class="form-control" name="mattype" id="mattype" onchange="addmatcont()" required>
-                  <option value="">*-- Material type --*</option>
+                  <option value="" selected disabled>Select Material Type  *</option>
                   <option value="a">Audio Material</option>
                   <option value="d">Document Material</option>
                   <option value="g">Game Material</option>
@@ -2697,11 +2701,11 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
                 </select>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="materialtitle" placeholder="Material Title" required>
+                <input type="text" class="form-control" name="materialtitle" placeholder="Material Title *" required>
               </div>
               <input type="hidden" name="slcid" value="<?php echo $slcidx;?>">
               <div class="form-group">
-                <input type="number" class="form-control" data-parsley-min="1" name="mtnumber" placeholder="Material Number" style="width:50%;" required>
+                <input type="number" class="form-control" data-parsley-min="1" name="mtnumber" placeholder="Material Number  *" required>
               </div>
               <div id="lessonstbx">
                 
@@ -2712,6 +2716,7 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
             </form> 
           </div>
         </div>
+      </div>
       </div>
     </div>
   </div>

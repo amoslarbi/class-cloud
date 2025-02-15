@@ -150,11 +150,6 @@ if(isset($_POST['register'])){
 <?php echo $echoscript;?>
   <div class="row">
     <div class="col-sm-8 col-sm-push-1 col-md-4 col-md-push-4 col-lg-4 col-lg-push-4">
-      <div class="center m-a-2">
-        <div class="icon-block img-circle">
-          <i class="material-icons md-36 text-muted">edit</i>
-        </div>
-      </div>
       <div class="card">
         <div class="card-header bg-white center">
           <div class="logodl">
@@ -164,55 +159,75 @@ if(isset($_POST['register'])){
         </div>
         <div class="p-a-2">
           <form action="" method="POST" data-parsley-validate>
+          <p style="color: red;" class="card-subtitle">Placeholders marked with (*) are required</p><br>
             <div class="form-group">
               <select class="form-control" name="user" required>
-                <option value="">*-- Sign up as --*</option>
+                <option value="" selected disabled>Select account type *</option>
                 <option value="1">Instructor</option>
                 <option value="2">Student</option>
               </select>
             </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="fname" placeholder="First Name" required>
+            <div class="row">
+            <div class="form-group col-lg-6">
+              <input type="text" class="form-control" name="fname" placeholder="First Name *" required>
             </div>
-            <div class="form-group">
+            <div class="form-group col-lg-6">
               <input type="text" class="form-control" name="mname" placeholder="Middle Name">
             </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="lname" placeholder="Last Name" required>
             </div>
-            <div class="form-group">
-                <input class="datepicker form-control" type="text" placeholder="Date of birth" name="dob" required>
+
+            <div class="row">
+            <div class="form-group col-lg-6">
+              <input type="text" class="form-control" name="lname" placeholder="Last Name *" required>
             </div>
+            <div class="form-group col-lg-6">
+                <input class="datepicker form-control" type="text" placeholder="Date of birth *" name="dob" required>
+            </div>
+            </div>
+
             <div class="form-group">
               <div class="c-inputs-stacked">
                 <div class="row">
-                  <div class="col-md-4 col-xs-4 col-sm-4">
-                    Gender:
+                  <div class="col-md-3 col-xs-4 col-sm-4">
+                    Gender *:
                   </div>
-                  <div class="col-md-4 col-xs-4 col-sm-4" style="padding: 4px;">
+                  <div class="col-md-3 col-xs-4 col-sm-4" style="padding: 4px;">
                     <label class="c-input c-radio">
                       <input id="radioStacked1" name="gender" value="m" type="radio" required>
                       <span class="c-indicator"></span> Male
                     </label>
                   </div>
-                  <div class="col-md-4 col-xs-4 col-sm-4" style="padding: 4px;">
+                  <div class="col-md-3 col-xs-4 col-sm-4" style="padding: 4px;">
                     <label class="c-input c-radio">
                       <input id="radioStacked2" name="gender" value="f" type="radio">
                       <span class="c-indicator"></span> Female
+                    </label>
+                  </div>
+                  <div class="col-md-3 col-xs-4 col-sm-4" style="padding: 4px;">
+                    <label class="c-input c-radio">
+                      <input id="radioStacked2" name="gender" value="f" type="radio">
+                      <span class="c-indicator"></span> Other
                     </label>
                   </div>
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <input type="email" class="form-control" name="email" data-parsley-type="email" placeholder="Email" required>
+              <input type="email" class="form-control" name="email" data-parsley-type="email" placeholder="Email *" required>
             </div>
+
+            <div class="row">
+            <div class="form-group col-lg-6">
             <div class="form-group">
-              <input type="password" class="form-control" id="password1" name="password"  placeholder="Password" required>
+              <input type="password" class="form-control" id="password1" name="password"  placeholder="Password *" required>
             </div>
-            <div class="form-group">
-              <input type="password" class="form-control" data-parsley-equalto="#password1" placeholder="Confirm Password" required>
             </div>
+            
+            <div class="form-group col-lg-6">
+              <input type="password" class="form-control" data-parsley-equalto="#password1" placeholder="Confirm Password *" required>
+            </div>
+            </div>
+
             <div class="form-group center">
               <label class="c-input c-checkbox">
                 <input type="checkbox" name="agree" checked required>

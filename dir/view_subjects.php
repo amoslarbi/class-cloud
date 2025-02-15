@@ -282,15 +282,6 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
     <!-- Brand -->
     <a href="hub" class="navbar-brand" style="background-image:url(assets/images/ccwhite.png);width: 40px;margin: 8px;height: 40px;background-size: 100%;"></a>
 
-    <!-- Search -->
-    <form class="form-inline pull-xs-left hidden-sm-down">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search">
-        <span class="input-group-btn"><button class="btn" type="button"><i class="material-icons">search</i></button></span>
-      </div>
-    </form>
-    <!-- // END Search -->
-
     <ul class="nav navbar-nav hidden-sm-down">
     </ul>
 
@@ -371,14 +362,15 @@ while ($jr = mysqli_fetch_array($jsq, MYSQLI_ASSOC)) {
           <div class="p-a-2">
             <form action="" method="POST" data-parsley-validate>
               <div class="form-group">
+              <p style="color: red;" class="card-subtitle">Placeholders marked with (*) are required</p><br>
                <select class="form-control" name="subject" required>
-                  <option value="">*-- Course --*</option>
+                  <option value="" selected disabled>Select Course *</option>
                   <?php echo $subjectz;?>
                 </select>
               </div>
               <div class="form-group">
                <select class="form-control" name="level" required>
-                  <option value="">*-- Level --*</option>
+                  <option value="" selected disabled>Select Level *</option>
                   <?php echo $levels;?>
                 </select>
               </div>

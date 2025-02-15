@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  php-apache:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: custom-php-apache:latest
+    ports:
+      - "8088:80" #run application on this port: http://localhost:8088/
+    volumes:
+      - ./dir:/var/www/html/dir
+      - ./index.php:/var/www/html/index.php
+      - ./inc:/var/www/html/inc
+    environment:
+      DB_HOST: mysql #database host
+      DB_NAME: my_database #database name
+      DB_USER: user #database user
+      DB_PASSWORD: password #database password
+    depends_on:
+      - mysql
+    restart: always
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password #database root password
+      MYSQL_DATABASE: my_database #database name
+      MYSQL_USER: user #database user
+      MYSQL_PASSWORD: password #database password
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db:/docker-entrypoint-ccdb.d
+    ports:
+      - "3308:3306"
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: user
+      PMA_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root_password
+    ports:
+      - "8081:80" #run phpmyadmin on this port: http://localhost:8081/
+    restart: always
+
+volumes:
+  mysql_data:
