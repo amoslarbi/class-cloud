@@ -1,7 +1,7 @@
 <?php
 //begin::database connection
 $host = 'mysql';  // The service name from docker-compose.yml
-$db   = 'my_database';
+$db   = 'class_cloud';
 $user = 'user';
 $pass = 'password';
 
