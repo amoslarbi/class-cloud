@@ -31,6 +31,7 @@ Objectives: The primary objective of this project is to develop a web-based plat
 <!-- GETTING STARTED -->
 ## Getting Started
 * git clone https://github.com/amoslarbi/class-cloud.git
+* cd into the class-cloud folder
 
 ### Start the containers using docker-compose
 docker-compose up --build
